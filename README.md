@@ -5,3 +5,4 @@ this project is designed to run in a developer computer, many pre-requirements h
 ### pre-requisites
 - [Docker engine](https://docs.docker.com/engine/install/)
 - [Docker compose](https://docs.docker.com/compose/install/)
+- run ```sudo docker-compose -f ./setup/docker-compose-mongodb.yml up -d```

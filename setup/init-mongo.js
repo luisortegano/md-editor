@@ -5,7 +5,7 @@ db = db.getSiblingDB(dataBaseName)
 db.createUser({
     user: "md-burea",
     pwd: "bureapass",
-    roles: ["readWrite"]
+    roles: [{role: "readWrite", db: "md-editor"}]
 });
 
 db.documents.insert({

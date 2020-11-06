@@ -12,7 +12,14 @@ db.documents.insert({
     name: "Base File",
     date: new Date (),
     content: `# title
-    ## sub title
-    this is a test
-    `
+## sub title
+this is a test`
+})
+
+db.documents.insert({
+    name: "Second File",
+    date: new Date (),
+    content: `# A little different
+## sub title
+this is a test`
 })

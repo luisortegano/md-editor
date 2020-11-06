@@ -3,10 +3,12 @@
 <head>
   <title>Express</title>
   <link rel="stylesheet" href="stylesheets/style.css">
-  <script src="javascripts/vendor/angular.min.js"></script>
+  <script src="vendor/angular/angular.min.js"></script>
   <script src="javascripts/md-editor/app.js"></script>
   <script src="javascripts/md-editor/controllers/controller.js"></script>
   <script src="javascripts/md-editor/services/service.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 
 <body ng-app="md-editor">
@@ -17,21 +19,51 @@
         <h3>MarkdownEditor</h3>
       </div>
 
+      <!-- Side panel for create and select -->
       <div>
 
-        <div class="document" ng-repeat="file in files">
-          <img class="document-icon" src="images/document-icon.png" alt="icon document">
-          <div class="document-info">
-            <h4>{{file.name}}</h4>
-            <p>horario {{file.date}}</p>
-          </div>
+        <div>
+          <button class="document" ng-click="createDocument()">
+            <img class="document-icon" src="images/document-icon.png" alt="icon document">
+            <div class="document-info">
+              <h4>+ New Document</h4>
+              <p></p>
+            </div>
+          </button>
+          <button class="document" ng-repeat="file in files" ng-click="selectFile($index)">
+            <img class="document-icon" src="images/document-icon.png" alt="icon document">
+            <div class="document-info">
+              <h4>{{file.name}}</h4>
+              <p>horario {{file.date}}</p>
+            </div>
+          </button>
         </div>
 
       </div>
     </section>
 
-    <section class="md-display">
-      <h1>MARKDOWN DISPLAY</h1>
+    <!-- editor area -->
+    <section class="editor-area">
+      <!-- edit buttons-->
+      <div class="buttons-bar">
+
+        <input type="text" ng-model="filename" ng-change="selected.isEditing()" >
+
+        <button ng-disabled="canDelete()" ng-click="deleteDocument()"> delete </button>
+        <button ng-disabled="!selected.isEdited()" ng-click="saveDocumentChanges()"> save </button>
+
+      </div>
+
+      <!-- edit area-->
+      <div class="md-display">
+        <div class='edit-area'>
+          <textarea name="canvas" id="canvas" cols="30" rows="10" ng-model="contentArea" ng-change="selected.isEditing()"></textarea>
+        </div>
+        <div class="display-area" >
+          <span id="test">
+          </span>
+        </div>
+      </div>
     </section>
 
   </section>

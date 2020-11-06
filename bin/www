@@ -1,4 +1,10 @@
 #!/usr/bin/env node
+/**
+ * Database
+ */
+
+const mongoose = require('../database/mongoose-connect')
+const documents = require('../models/document');
 
 /**
  * Module dependencies.

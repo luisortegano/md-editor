@@ -13,6 +13,18 @@
         this.getDocuments = function () {
             return $http.get(basePath);
         }
+
+        this.createDocument = function (data) {
+            return $http.post(basePath, data);
+        }
+
+        this.updateDocument = function (data) {
+            return $http.put(`${basePath}/${data._id}`, data);
+        }
+
+        this.deleteDocument = function (id) {
+            return $http.delete(`${basePath}/${id}`);
+        }
     })
 })(angular)
 

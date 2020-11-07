@@ -9,17 +9,15 @@ db.createUser({
 });
 
 db.documents.insert({
-    name: "Base File",
+    name: "entrada1",
     date: new Date (),
     content: `# title
-## sub title
 this is a test`
 })
 
 db.documents.insert({
-    name: "Second File",
+    name: "entrada2",
     date: new Date (),
-    content: `# A little different
-## sub title
-this is a test`
+    content: `# A bit different
+- a bit?`
 })

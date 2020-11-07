@@ -11,3 +11,6 @@ El proyecto esta desarrollado para ejecutarse en una maquina personal.
 ### Como correr?
 
 Se debe usar el commando ```npm start``` e ir a [md-editor](http://localhost:3000)
+
+### Demo
+[video demo](https://youtu.be/As-ZepuCIeY)

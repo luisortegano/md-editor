@@ -64,8 +64,8 @@
         );
 
 
-        $scope.selectFile = (index) => {
-            if( $scope.selected.position != index){
+        $scope.selectFile = (index, force = false) => {
+            if( $scope.selected.position != index || force){
                 $scope.selected.position = index
                 $scope.selected.file = $scope.files[index]
                 $scope.filename = $scope.files[index].name
@@ -106,10 +106,9 @@
             if($scope.selected.file){
                 mdService.deleteDocument($scope.selected.file._id).then(
                     response => {
-                        const oldPosition = $scope.selected.position;
                         const newPosition = Math.max($scope.selected.position-1 , 0);
-                        $scope.files.splice(oldPosition, 1);
-                        $scope.selectFile(newPosition);
+                        $scope.files.splice($scope.selected.position, 1);
+                        $scope.selectFile(newPosition, true);
                         if($scope.files.length == 0){
                             $scope.selected.position = -1;
                             $scope.createDocument();
